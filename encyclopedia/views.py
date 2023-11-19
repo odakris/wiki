@@ -39,20 +39,21 @@ def query_search(request):
         query = form.cleaned_data["query"]
         full_list = util.list_entries()
         sub_list = [ query_match for query_match in full_list if query.lower() in query_match.lower() ]
-        print(f"SUBLIST {sub_list}")
 
-        if query in [item.lower() for item in full_list] or len(sub_list) == 0:
+        if query.lower() in [item.lower() for item in full_list] or len(sub_list) == 0:
             # If query is found OR if there is no matching elements in sub_list
             return get_page(request, query)
         
         else:
-            # If query not found then render sub matches list
+            # If query not found then render matching elements list
             form = NewSearchForm()
             return render(request, "encyclopedia/index.html", {
                 "page_title": "All Matching Pages",
                 "form": form,
                 "entries": sub_list
             })
+    else:
+        return index(request)
 
 
     
