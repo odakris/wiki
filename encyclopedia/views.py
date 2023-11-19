@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from markdown2 import Markdown
+
 
 
 from . import util
@@ -11,10 +11,8 @@ def index(request):
     })
 
 def get_page(request, title):
-    markdowner = Markdown()
-    
     try:    
-        html = markdowner.convert(util.get_entry(title))
+        html = util.markdown_to_html_converter(title)
         return render(request, "encyclopedia/page.html", {
             "title": title,
             "page": html
@@ -23,4 +21,4 @@ def get_page(request, title):
         return render(request, "encyclopedia/error.html", {
             "title": title
         })
-
+    
