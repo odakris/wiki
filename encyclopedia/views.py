@@ -10,9 +10,11 @@ class NewSearchForm(forms.Form):
 def index(request):
     form = NewSearchForm()
     return render(request, "encyclopedia/index.html", {
+        "page_title": "All Pages",
         "form": form,
         "entries": util.list_entries()
     })
+
 
 def get_page(request, title):
     form = NewSearchForm()
@@ -29,4 +31,28 @@ def get_page(request, title):
             "title": title
         })
     
+
+def query_search(request):
+    # if request.method == "GET":
+    form = NewSearchForm(request.GET)
+    if form.is_valid():
+        query = form.cleaned_data["query"]
+        full_list = util.list_entries()
+        sub_list = [ query_match for query_match in full_list if query.lower() in query_match.lower() ]
+        print(f"SUBLIST {sub_list}")
+
+        if query in [item.lower() for item in full_list] or len(sub_list) == 0:
+            # If query is found OR if there is no matching elements in sub_list
+            return get_page(request, query)
+        
+        else:
+            # If query not found then render sub matches list
+            form = NewSearchForm()
+            return render(request, "encyclopedia/index.html", {
+                "page_title": "All Matching Pages",
+                "form": form,
+                "entries": sub_list
+            })
+
+
     
