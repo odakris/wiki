@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>{{ homepage_title }}</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+
+<body class="flex homepage">
+    <div class="flex">
+        <img src="{% static 'encyclopedia/images/wiki-logo.png' %}" alt="wiki-logo" width="500px">
+        <div>
+            <form action="{% url 'encyclopedia:wiki_search' %}" method="GET" class="flex homepage-form">
+                <!-- <div class="input-group input-group-lg">
+                    <input type="text" class="form-control" aria-label="Sizing example input"
+                        aria-describedby="inputGroup-sizing-lg">
+                </div> -->
+                {{ search_form }}
+                <input type="submit" value="Wiki Search" class="btn btn-lg btn-dark">
+            </form>
+        </div>
+    </div>
+    <!-- <div class="flex footer">
+        <p><a href="https://cs50.harvard.edu/web/2020/projects/1/wiki/" target="_blank">Project 1 - Wiki</a></p>
+        <p><a href="https://www.youtube.com/watch?v=Nn7EX3zkGUo&list=PLhQjrBD2T380xvFSUmToMMzERZ3qB5Ueu"
+                target="_blank">CS50’s Web Programming with Python and JavaScript</a></p>
+        <p>Created by <a href="https://github.com/odakris?tab=repositories" target="_blank">odakris</a></p>
+    </div> -->
+
+</body>
+
+</html>

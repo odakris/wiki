@@ -14,6 +14,13 @@ class NewAddFrom(forms.Form):
     wiki_title = forms.CharField(label=False, widget=forms.TextInput(attrs={"class":"form-control","placeholder": "Wiki Title", "autocomplete": "off"}))
     wiki_content = forms.CharField(label=False, initial=util.default_textarea, widget=forms.Textarea(attrs={"class":"form-control"}))
 
+def homepage(request):
+    search_form = NewSearchForm()
+    return render(request, "encyclopedia/homepage.html", {
+        "homepage_title": "Encyclopedia - HomePage",
+        "search_form": search_form
+    })
+    
 
 def index(request):
     search_form = NewSearchForm()
@@ -57,7 +64,7 @@ def wiki_search(request):
             # If query not found then render matching elements list
             search_form = NewSearchForm()
             return render(request, "encyclopedia/index.html", {
-                "wiki_title": "All Matching Wiki Pages",
+                "title": "All Matching Wiki Pages",
                 "search_form": search_form,
                 "entries": sub_list
             })
