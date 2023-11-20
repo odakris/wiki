@@ -1,3 +1,7 @@
+/* * {
+    border: 1px solid black;
+} */
+
 body {
     margin: 0;
     background-color: white;
@@ -13,8 +17,9 @@ h1 {
 }
 
 textarea {
-    height: 90vh;
+    height: 60vh;
     width: 80%;
+    resize: none;
 }
 
 .main {
@@ -35,4 +40,8 @@ textarea {
 
 .sidebar h2 {
     margin-top: 5px;
+}
+
+.form-control {
+    margin: 10px 0;
 }
