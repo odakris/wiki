@@ -40,7 +40,7 @@ def get_page(request, title):
         })
     
 
-def query_search(request):
+def wiki_search(request):
     # if request.method == "GET":
     search_form = NewSearchForm(request.GET)
     if search_form.is_valid():

@@ -19,7 +19,7 @@
         <div class="sidebar col-lg-2 col-md-3">
             <h2>Wiki</h2>
             <div>
-                <form action="{% url 'encyclopedia:search' %}" method="GET">
+                <form action="{% url 'encyclopedia:wiki_search' %}" method="GET">
                     {{ search_form }}
                     <input type="submit" value="Wiki Search">
                 </form>
