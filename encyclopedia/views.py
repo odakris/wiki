@@ -1,5 +1,6 @@
 from django import forms
 from django.shortcuts import render, redirect
+from django.contrib import messages
 
 from . import util
 
@@ -11,7 +12,7 @@ class NewSearchForm(forms.Form):
 
 class NewCreateFrom(forms.Form):
     wiki_title = forms.CharField(label=False, widget=forms.TextInput(attrs={"class":"form-control","placeholder": "Wiki Title", "autocomplete": "off"}))
-    wiki_content = forms.CharField(label=False, widget=forms.Textarea(attrs={"class":"form-control"}))
+    wiki_content = forms.CharField(label=False, initial=util.default_textarea, widget=forms.Textarea(attrs={"class":"form-control"}))
 
 
 def index(request):
@@ -24,7 +25,6 @@ def index(request):
 
 
 def get_page(request, title):
-    print(f"REQUEST {request}")
     search_form = NewSearchForm()
     try:    
         html = util.markdown_to_html_converter(title)
@@ -67,7 +67,7 @@ def query_search(request):
 
 def create(request):
     search_form = NewSearchForm()
-    create_form =  NewCreateFrom()
+    create_form = NewCreateFrom()
 
     if request.method == "POST":
         create_form=NewCreateFrom(request.POST)
@@ -76,16 +76,19 @@ def create(request):
             wiki_content= create_form.cleaned_data["wiki_content"]
             
             if wiki_title.lower() in full_list_lowercase:
-                return render(request, "encyclopedia/error.html", {
-                    "search_form": search_form,
-                    "title": "ALREADY EXIST"
-                })
+                # If wiki already exist, prompt alert
+                messages.error(request,"This Wiki already exist!")
+
             else:
+                # If wiki does not exist yet, redirect to new wiki page
                 util.save_entry(wiki_title, wiki_content)
-                return redirect(f"/wiki/{wiki_title}")
-    else:
-        return render(request, "encyclopedia/create.html", {
-            "title": "Create a new wiki",
-            "search_form": search_form,
-            "create_form": create_form
-        })
+                messages.success(request,"Your Wiki has been created!")
+                return redirect(f"/wiki/{wiki_title}")        
+
+    return render(request, "encyclopedia/create.html", {
+        "title": "Create a new wiki",
+        "search_form": search_form,
+        "create_form": create_form
+    })
+    
+            
