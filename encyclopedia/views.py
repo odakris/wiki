@@ -10,7 +10,7 @@ full_list_lowercase = [item.lower() for item in full_list]
 class NewSearchForm(forms.Form):
     query = forms.CharField(label=False, widget=forms.TextInput(attrs={"class": "form-control", "placeholder": "Search Encyclopedia", "autocomplete":"off"}))
 
-class NewCreateFrom(forms.Form):
+class NewAddFrom(forms.Form):
     wiki_title = forms.CharField(label=False, widget=forms.TextInput(attrs={"class":"form-control","placeholder": "Wiki Title", "autocomplete": "off"}))
     wiki_content = forms.CharField(label=False, initial=util.default_textarea, widget=forms.Textarea(attrs={"class":"form-control"}))
 
@@ -65,15 +65,15 @@ def query_search(request):
         return index(request)
 
 
-def create(request):
+def add_wiki(request):
     search_form = NewSearchForm()
-    create_form = NewCreateFrom()
+    add_form = NewAddFrom()
 
     if request.method == "POST":
-        create_form=NewCreateFrom(request.POST)
-        if create_form.is_valid():
-            wiki_title = create_form.cleaned_data["wiki_title"]
-            wiki_content= create_form.cleaned_data["wiki_content"]
+        add_form=NewAddFrom(request.POST)
+        if add_form.is_valid():
+            wiki_title = add_form.cleaned_data["wiki_title"]
+            wiki_content= add_form.cleaned_data["wiki_content"]
             
             if wiki_title.lower() in full_list_lowercase:
                 # If wiki already exist, prompt alert
@@ -85,10 +85,10 @@ def create(request):
                 messages.success(request,"Your Wiki has been created!")
                 return redirect(f"/wiki/{wiki_title}")        
 
-    return render(request, "encyclopedia/create.html", {
-        "title": "Create a new wiki",
+    return render(request, "encyclopedia/add.html", {
+        "title": "Add New Wiki",
         "search_form": search_form,
-        "create_form": create_form
+        "add_form": add_form
     })
     
             
