@@ -1,7 +1,7 @@
 {% extends "encyclopedia/layout.html" %}
 
 {% block title %}
-{{ title }}
+{{ wiki_title }}
 {% endblock %}
 
 {% block body %}
@@ -23,7 +23,7 @@
 <hr>
 
 <div>
-    {{ page | safe }}
+    {{ wiki | safe }}
 </div>
 
 {% endblock %}

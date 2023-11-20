@@ -18,25 +18,25 @@ class NewAddFrom(forms.Form):
 def index(request):
     search_form = NewSearchForm()
     return render(request, "encyclopedia/index.html", {
-        "page_title": "All Pages",
+        "title": "All Wiki Pages",
         "search_form": search_form,
         "entries": util.list_entries()
     })
 
 
-def get_page(request, title):
+def get_wiki(request, title):
     search_form = NewSearchForm()
     try:    
         html = util.markdown_to_html_converter(title)
-        return render(request, "encyclopedia/page.html", {
+        return render(request, "encyclopedia/wiki.html", {
             "search_form": search_form,
-            "title": title,
-            "page": html
+            "wiki_title": title,
+            "wiki": html
         })
     except:
         return render(request, "encyclopedia/error.html", {
             "search_form": search_form,
-            "title": title
+            "wiki_title": title
         })
     
 
@@ -48,16 +48,16 @@ def wiki_search(request):
         sub_list = [ query_match for query_match in full_list if query.lower() in query_match.lower() ]
 
         if query.lower() in full_list_lowercase:
-            # If query is found redirect to query page
+            # If query is found redirect to query wiki page
             return redirect(f"/wiki/{query}")
         elif len(sub_list) == 0:
             # if there is no matching elements in sub_list return error page
-            return get_page(request, query)
+            return get_wiki(request, query)
         else:
             # If query not found then render matching elements list
             search_form = NewSearchForm()
             return render(request, "encyclopedia/index.html", {
-                "page_title": "All Matching Pages",
+                "wiki_title": "All Matching Wiki Pages",
                 "search_form": search_form,
                 "entries": sub_list
             })
