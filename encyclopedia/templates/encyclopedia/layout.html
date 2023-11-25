@@ -15,49 +15,46 @@
 </head>
 
 <body>
-    <div class="row">
-        <div class="sidebar col-lg-2 col-md-3 flex">
+    <div class="sidebar flex">
 
-            <div class="flex panel">
-                <a href="{% url 'encyclopedia:homepage' %}">
-                    <img src="{% static 'encyclopedia/images/wiki-logo.png' %}" alt="wiki-logo" width="150px">
-                </a>
-                <h2>Wiki</h2>
+        <div class="flex">
+            <a href="{% url 'encyclopedia:homepage' %}">
+                <img src="{% static 'encyclopedia/images/wiki-logo.png' %}" alt="wiki-logo" width="150px">
+            </a>
+            <h2>Wiki</h2>
+            <div>
+                <form action="{% url 'encyclopedia:wiki_search' %}" method="GET" class="sidebar-form">
+                    {{ search_form }}
+                    <input type="submit" value="Wiki Search" class="btn btn-dark">
+                </form>
+            </div>
+            <div class="links flex">
                 <div>
-                    <form action="{% url 'encyclopedia:wiki_search' %}" method="GET" class="sidebar-form">
-                        {{ search_form }}
-                        <input type="submit" value="Wiki Search" class="btn btn-dark">
-                    </form>
+                    <a href="{% url 'encyclopedia:index' %}">Home</a>
                 </div>
-                <div class="flex links">
-                    <div class="link">
-                        <a href="{% url 'encyclopedia:index' %}">Home</a>
-                    </div>
-                    <div class="link">
-                        <a href="{% url 'encyclopedia:add_wiki' %}">Create New Wiki Page</a>
-                    </div>
-                    <div class="link">
-                        Random Wiki Page
-                    </div>
+                <div>
+                    <a href="{% url 'encyclopedia:add_wiki' %}">Create New Wiki Page</a>
                 </div>
-
+                <div>
+                    <a href="{% url 'encyclopedia:add_wiki' %}">Random Wiki Page</a>
+                </div>
             </div>
 
-            <div class="flex footer">
-                <p><a href="https://cs50.harvard.edu/web/2020/projects/1/wiki/" target="_blank">Project 1 - Wiki</a></p>
-                <p><a href="https://www.youtube.com/watch?v=Nn7EX3zkGUo&list=PLhQjrBD2T380xvFSUmToMMzERZ3qB5Ueu"
-                        target="_blank">CS50’s Web Programming with Python and JavaScript</a></p>
-                <p>Created by <a href="https://github.com/odakris?tab=repositories" target="_blank">odakris</a></p>
-            </div>
-            <!-- {% block nav %}
+        </div>
+
+        <div class="flex footer">
+            <p><a href="https://cs50.harvard.edu/web/2020/projects/1/wiki/" target="_blank">Project 1 - Wiki</a></p>
+            <p><a href="https://www.youtube.com/watch?v=Nn7EX3zkGUo&list=PLhQjrBD2T380xvFSUmToMMzERZ3qB5Ueu"
+                    target="_blank">CS50’s Web Programming with Python and JavaScript</a></p>
+            <p>Created by <a href="https://github.com/odakris?tab=repositories" target="_blank">odakris</a></p>
+        </div>
+        <!-- {% block nav %}
             {% endblock %} -->
 
-        </div>
-        <div class="main col-lg-10 col-md-9">
-            {% block body %}
-            {% endblock %}
-        </div>
-
+    </div>
+    <div class="main">
+        {% block body %}
+        {% endblock %}
     </div>
 
 </body>
