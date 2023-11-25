@@ -1,8 +1,9 @@
 * {
-    /* border: 1px solid black; */
+    border: 1px solid black;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 html {
@@ -91,8 +92,10 @@ textarea {
 /* SIDEBAR */
 .sidebar {
     background-color: #f0f0f0;
+    /* width: 270px; */
     height: 100vh;
     padding: 20px;
+    font-size: 18px;
     justify-content: space-between !important;
 }
 
@@ -111,7 +114,7 @@ textarea {
 
 .links {
     height: 130px;
-    margin: 40px 20px;
+    margin: 40px 0;
     justify-content: space-between;
 }
 
@@ -120,6 +123,11 @@ textarea {
     text-decoration: none;
     padding: 7px;
     font-weight: 600;
+
+}
+
+.link {
+    text-align: center;
 }
 
 .link:hover,
@@ -127,6 +135,7 @@ textarea {
     background-color: black;
     color: #f0f0f0;
     border-radius: 7px;
+    /* width: 100%; */
 }
 
 /* FOOTER */
