@@ -25,6 +25,14 @@ def save_entry(title, content):
         default_storage.delete(filename)
     default_storage.save(filename, ContentFile(content))
 
+def delete_entry(title):
+    """
+    Delete an encyclopedia entry, given its title.
+    """
+    filename = f"entries/{title}.md"
+    if default_storage.exists(filename):
+        default_storage.delete(filename)
+
 
 def get_entry(title):
     """
@@ -43,6 +51,7 @@ def markdown_to_html_converter(markdown):
     """
     markdowner = Markdown()
     return markdowner.convert(get_entry(markdown))
+
 
 default_textarea = '''
 # THIS IS A BIG TITLE

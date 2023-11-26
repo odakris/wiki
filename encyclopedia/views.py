@@ -1,6 +1,7 @@
 from django import forms
 from django.shortcuts import render, redirect
 from django.contrib import messages
+import random
 
 from . import util
 
@@ -128,6 +129,12 @@ def edit_wiki(request, title):
         "search_form": search_form,
         "edit_form": edit_form
     })
+
+def delete_wiki(request, title):
+    util.delete_entry(title)
+    messages.error(request, f"{title} page has been deleted!")
+    return redirect(f"/wiki")
+
 
     
             

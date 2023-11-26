@@ -19,7 +19,9 @@
     <a href="{% url 'encyclopedia:edit_wiki' wiki_title %}"><button type="button"
             class="btn btn-outline-primary"><strong>Edit
                 Wiki</strong></button></a>
-    <button type="button" class="btn btn-outline-danger"><strong>Delete</strong></button>
+    <a href="{% url 'encyclopedia:delete_wiki' wiki_title %}"><button type="button"
+            class="btn btn-outline-danger"><strong>Delete</strong></button></a>
+    <!-- <button type="button" class="btn btn-outline-danger" onclick="del_wiki(wiki_title)"><strong>Delete</strong></button> -->
 </div>
 
 <hr>

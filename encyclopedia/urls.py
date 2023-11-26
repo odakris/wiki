@@ -9,5 +9,7 @@ urlpatterns = [
     path("wiki/<str:title>/", views.get_wiki, name="wiki"),
     path("search", views.wiki_search, name="wiki_search"),
     path("add/", views.add_wiki, name="add_wiki"),
-    path("wiki/<str:title>/edit", views.edit_wiki, name="edit_wiki")
+    path("edit/<str:title>/", views.edit_wiki, name="edit_wiki"),
+    path("delete/<str:title>/", views.delete_wiki, name="delete_wiki"),
+
 ]
