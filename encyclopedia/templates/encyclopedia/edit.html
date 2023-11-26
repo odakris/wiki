@@ -5,7 +5,6 @@
 {% endblock %}
 
 {% block body %}
-
 <div class="messages">
     {% for message in messages %}
     <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
@@ -15,17 +14,14 @@
     {% endfor %}
 </div>
 
-<div class="buttons d-flex justify-content-between">
-    <a href="{% url 'encyclopedia:edit_wiki' wiki_title %}"><button type="button"
-            class="btn btn-outline-primary"><strong>Edit
-                Wiki</strong></button></a>
-    <button type="button" class="btn btn-outline-danger"><strong>Delete</strong></button>
-</div>
-
-<hr>
+<h1>{{ wiki_title }}</h1>
 
 <div>
-    {{ wiki | safe }}
+    <form action="{% url 'encyclopedia:edit_wiki' wiki_title %}" method="POST" class="add-form">
+        {% csrf_token %}
+        {{ edit_form }}
+        <input type="submit" value="{{ wiki_title }}" class="btn btn-dark">
+    </form>
 </div>
 
 {% endblock %}
