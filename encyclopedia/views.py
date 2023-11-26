@@ -136,5 +136,8 @@ def delete_wiki(request, title):
     return redirect(f"/wiki")
 
 
+def random_wiki(request):
+    random_page =  random.choice(util.list_entries())
+    return redirect(f"/wiki/{random_page}")
     
             

@@ -25,6 +25,7 @@ def save_entry(title, content):
         default_storage.delete(filename)
     default_storage.save(filename, ContentFile(content))
 
+
 def delete_entry(title):
     """
     Delete an encyclopedia entry, given its title.
@@ -44,6 +45,7 @@ def get_entry(title):
         return f.read().decode("utf-8")
     except FileNotFoundError:
         return None
+    
     
 def markdown_to_html_converter(markdown):
     """
