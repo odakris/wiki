@@ -59,23 +59,23 @@ textarea {
   margin: 3.1em;
 }
 
-.homepage-form > .form-control {
+.homepage-form>.form-control {
   font-size: 1.25em;
   height: 3.1em;
 }
 
-.homepage-form > .form-control:focus,
-.sidebar-form > .form-control:focus,
-.add-form > .form-control:focus {
+.homepage-form>.form-control:focus,
+.sidebar-form>.form-control:focus,
+.add-form>.form-control:focus {
   border-color: black;
 }
 
-.homepage-form > .form-control:hover,
-.homepage-form > .form-control:focus,
-.sidebar-form > .form-control:hover,
-.sidebar-form > .form-control:focus,
-.add-form > .form-control:hover,
-.add-form > .form-control:focus {
+.homepage-form>.form-control:hover,
+.homepage-form>.form-control:focus,
+.sidebar-form>.form-control:hover,
+.sidebar-form>.form-control:focus,
+.add-form>.form-control:hover,
+.add-form>.form-control:focus {
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.8);
 }
 
@@ -151,8 +151,8 @@ textarea {
 }
 
 /* FOOTER */
-.footer > p,
-.footer > p > a {
+.footer>p,
+.footer>p>a {
   color: #acacac;
   font-size: 0.75rem;
 }
@@ -219,7 +219,7 @@ textarea {
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 380px) {
   .sidebar {
     padding-top: 2em;
   }

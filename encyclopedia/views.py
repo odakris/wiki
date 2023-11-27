@@ -36,7 +36,7 @@ def get_wiki(request, title):
         return render(request, "encyclopedia/wiki.html", {
             "search_form": search_form,
             "wiki_title": title,
-            "wiki": html
+            "wiki_content": html
         })
     except:
         return render(request, "encyclopedia/error.html", {
