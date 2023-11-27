@@ -10,6 +10,7 @@ Error
     <h1>Page not found</h1>
     <h6>/404</h6>
     <p>The requested page <span><i>"{{ wiki_title }}"</i></span> was not found.</p>
+    <p>Would you like to create <a href="{% url 'encyclopedia:add_wiki' %}">{{ wiki_title }}</a> ?</p>
 </div>
 
 {% endblock %}
