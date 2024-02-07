@@ -42,6 +42,7 @@ MESSAGE_TAGS = {
 }
 
 INSTALLED_APPS = [
+    'wiki'
     'encyclopedia',
     'django.contrib.admin',
     'django.contrib.auth',
