@@ -8,6 +8,8 @@
 
 Video demo of **[Wiki](https://www.youtube.com/watch?v=r_xjyXFOg5k)**
 
+LIVE demo of **[Wiki](https://odakris-wiki.vercel.app/)**
+
 ## Description
 
 This is a Wikipedia-like online encyclopedia. Instructions for completing this project can be found at https://cs50.harvard.edu/web/2020/projects/1/wiki/
